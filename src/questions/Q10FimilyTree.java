@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Q11FimilyTree {
+public class Q10FimilyTree {
 
 	static final int PA = 0;
 	static final int CH = 1;
