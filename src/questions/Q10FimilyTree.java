@@ -9,6 +9,17 @@ import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
+//Pesho Peshev
+//11/11/1951 - 23/05/1980
+//Penka Pesheva - 23/05/1980
+//Penka Pesheva 09/02/1953
+//Pesho Peshev - Gancho Peshev
+//Gancho Peshev 01/01/2005
+//Stamat Peshev 11/11/1951
+//Pesho Peshev 23/05/1980
+//End
+
 public class Q10FimilyTree {
 
 	static final int PA = 0;
@@ -76,15 +87,7 @@ public class Q10FimilyTree {
 		searchTree(dataForm, target);
 
 	}
-//Pesho Peshev
-//11/11/1951 - 23/05/1980
-//Penka Pesheva - 23/05/1980
-//Penka Pesheva 09/02/1953
-//Pesho Peshev - Gancho Peshev
-//Gancho Peshev 01/01/2005
-//Stamat Peshev 11/11/1951
-//Pesho Peshev 23/05/1980
-//End
+
 
 	static boolean checkDate(String Date) {
 
@@ -148,7 +151,7 @@ public class Q10FimilyTree {
 		}
 		
 		System.out.println("Parents:");
-		Comparator<? super orderedOutput> com = new orderedOutput();
+		Comparator<? super orderedOutput> com = new OutputComparator();
 		paLines.sort(com);
 		chLines.sort(com);
 		for(orderedOutput line:paLines)
@@ -162,21 +165,25 @@ public class Q10FimilyTree {
 		}
 	}
 
-//	static Q11Person checkWithName(HashMap<String, Q11Person> map, String name,int type)
-//	{
-//		if(map.containsKey(name))
-//		{
-//			return map.get(name);
-//		}
-//		else
-//		{
-//			if (type == PA)
-//		}
-//	}
 
 }
 
-class orderedOutput implements Comparator<orderedOutput> {
+class OutputComparator implements Comparator<orderedOutput> 
+{
+	@Override
+	public int compare(orderedOutput o1, orderedOutput o2) {
+		if (o1.order > o2.order)
+			return 1;
+		if (o1.order < o2.order)
+			return -1;
+		if (o1.order == o2.order)
+			return 0;
+		return -1;
+	}
+}
+
+
+class orderedOutput {
 	String line;
 	int order;
 
@@ -189,16 +196,6 @@ class orderedOutput implements Comparator<orderedOutput> {
 		this.order = order;
 	}
 
-	@Override
-	public int compare(orderedOutput o1, orderedOutput o2) {
-		if (o1.order > o2.order)
-			return 1;
-		if (o1.order < o2.order)
-			return -1;
-		if (o1.order == o2.order)
-			return 0;
-		return -1;
-	}
 }
 
 class DataForm {
